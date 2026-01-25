@@ -44,7 +44,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
       >
         {/* Product description */}
         <div className="mb-auto">
-          <p
+          <h3
             className="text-white mb-3"
             style={{
               fontSize: 'clamp(15px, 1.3vw, 13px)',
@@ -54,7 +54,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             }}
           >
             Projekt, built for design engineers.
-          </p>
+          </h3>
           <p
             className="text-gray-400 mb-4"
             style={{

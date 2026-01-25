@@ -45,7 +45,7 @@ function CommitMessageBox() {
   )
 }
 
-function FloatingWaitlistButton({ x, y }: { x: number; y: number }) {
+function FloatingCursor({ x, y, variant = 'waitlist' }: { x: number; y: number; variant?: 'waitlist' | 'email' }) {
   return (
     <div
       className="fixed pointer-events-none z-50 hidden md:block"
@@ -55,9 +55,23 @@ function FloatingWaitlistButton({ x, y }: { x: number; y: number }) {
         transform: 'translate(-50%, -50%)'
       }}
     >
-      <div className="bg-black/70 backdrop-blur-sm text-white text-xs px-[21px] py-[18px] rounded-2xl flex items-center gap-2.5 whitespace-nowrap h-[39px]">
-        <span>Join Projekt Waitlist</span>
-        <img src="/images/arrow-narrow-right.svg" alt="Arrow" className="w-4 h-4" />
+      <div
+        className="bg-black/70 backdrop-blur-sm text-white text-xs px-[21px] py-[18px] rounded-2xl flex items-center gap-2.5 whitespace-nowrap h-[39px] transition-[width] duration-300 ease-out"
+        style={{
+          width: variant === 'email' ? '90px' : '185px'
+        }}
+      >
+        <span>
+          {variant === 'email' ? 'Email' : 'Join Projekt Waitlist'}
+        </span>
+        <img
+          src="/images/arrow-narrow-right.svg"
+          alt="Arrow"
+          className="w-4 h-4 transition-transform duration-300 ease-out"
+          style={{
+            transform: variant === 'email' ? 'rotate(-45deg)' : 'rotate(0deg)'
+          }}
+        />
       </div>
     </div>
   )
@@ -80,7 +94,8 @@ const getIsDesktop = () => typeof window !== 'undefined' && window.matchMedia('(
 
 function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [showWaitlistCursor, setShowWaitlistCursor] = useState(false)
+  const [showCursor, setShowCursor] = useState(false)
+  const [cursorVariant, setCursorVariant] = useState<'waitlist' | 'email'>('waitlist')
   const [isDesktop, setIsDesktop] = useState(getIsDesktop)
   const [waitlistOpen, setWaitlistOpen] = useState(getIsDesktop)
 
@@ -99,17 +114,18 @@ function App() {
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePos({ x: e.clientX, y: e.clientY })
-    setShowWaitlistCursor(true)
+    setShowCursor(true)
   }
 
   const handleMouseLeave = () => {
-    setShowWaitlistCursor(false)
+    setShowCursor(false)
+    setCursorVariant('waitlist')
   }
 
   return (
     <div className="h-full bg-black p-2 md:p-4 overflow-hidden">
-      {/* Floating Waitlist Button that follows cursor - desktop only */}
-      {showWaitlistCursor && <FloatingWaitlistButton x={mousePos.x} y={mousePos.y} />}
+      {/* Floating cursor that follows mouse - desktop only */}
+      {showCursor && <FloatingCursor x={mousePos.x} y={mousePos.y} variant={cursorVariant} />}
 
       {/* Fixed bottom button - mobile only */}
       {!waitlistOpen && <MobileWaitlistButton onClick={() => setWaitlistOpen(true)} />}
@@ -151,6 +167,23 @@ function App() {
             </div>
             <DesignLogo />
           </div>
+
+          {/* Contact Link */}
+          <a
+            href="mailto:bobby@getprojekt.com"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors"
+            style={{
+              fontFamily: 'Inter',
+              fontSize: '10px',
+              fontWeight: 400,
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase'
+            }}
+            onMouseEnter={() => setCursorVariant('email')}
+            onMouseLeave={() => setCursorVariant('waitlist')}
+          >
+            Communicate
+          </a>
         </div>
 
         {/* Waitlist Panel */}
