@@ -94,18 +94,18 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-black p-4">
+    <div className="min-h-screen bg-black p-0 md:p-4">
       {/* Floating Waitlist Button that follows cursor - desktop only */}
       {showWaitlistCursor && <FloatingWaitlistButton x={mousePos.x} y={mousePos.y} />}
 
       {/* Fixed bottom button - mobile only */}
       {!waitlistOpen && <MobileWaitlistButton onClick={() => setWaitlistOpen(true)} />}
 
-      <div className={`w-full h-[calc(100vh-32px)] flex transition-all duration-200 ${waitlistOpen ? 'md:gap-4' : 'gap-0'}`}>
+      <div className={`w-full h-screen md:h-[calc(100vh-32px)] flex transition-all duration-200 ${waitlistOpen ? 'md:gap-4' : 'gap-0'}`}>
         {/* Main Landing Page */}
         <div
           data-blend-name="LandingPageContainer"
-          className={`relative flex-1 h-full bg-gray-800 rounded-2xl overflow-hidden transition-all duration-200 ${waitlistOpen ? 'hidden md:block' : ''}`}
+          className={`relative flex-1 h-full bg-gray-800 rounded-none md:rounded-2xl overflow-hidden transition-all duration-200 ${waitlistOpen ? 'hidden md:block' : ''}`}
           style={{
             backgroundImage: 'url("/images/background-2fafc0.png")',
             backgroundSize: 'cover',

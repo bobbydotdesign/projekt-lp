@@ -29,7 +29,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
     <div
       data-blend-name="WaitlistPanel"
       className={`
-        h-full bg-black rounded-2xl overflow-hidden
+        h-full bg-black rounded-none md:rounded-2xl overflow-hidden
         transition-all duration-200 ease-out
         ${open ? "w-full md:w-[400px] opacity-100" : "w-0 opacity-0"}
       `}
