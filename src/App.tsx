@@ -94,7 +94,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-black p-2 md:p-4">
+    <div className="h-full bg-black p-2 md:p-4 overflow-hidden">
       {/* Floating Waitlist Button that follows cursor - desktop only */}
       {showWaitlistCursor && <FloatingWaitlistButton x={mousePos.x} y={mousePos.y} />}
 
