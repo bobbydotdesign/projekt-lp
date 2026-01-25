@@ -75,22 +75,24 @@ function MobileWaitlistButton({ onClick }: { onClick: () => void }) {
   )
 }
 
+// Check if desktop at load time
+const getIsDesktop = () => typeof window !== 'undefined' && window.matchMedia('(min-width: 768px)').matches
+
 function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [showWaitlistCursor, setShowWaitlistCursor] = useState(false)
-  const [waitlistOpen, setWaitlistOpen] = useState(false)
-  const [isDesktop, setIsDesktop] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(getIsDesktop)
+  const [waitlistOpen, setWaitlistOpen] = useState(getIsDesktop)
 
-  // Check if desktop on mount and window resize
+  // Handle window resize
   useEffect(() => {
     const checkDesktop = () => {
-      const desktop = window.matchMedia('(min-width: 768px)').matches
+      const desktop = getIsDesktop()
       setIsDesktop(desktop)
       if (desktop) {
         setWaitlistOpen(true)
       }
     }
-    checkDesktop()
     window.addEventListener('resize', checkDesktop)
     return () => window.removeEventListener('resize', checkDesktop)
   }, [])
