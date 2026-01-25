@@ -1,4 +1,6 @@
+import { useEffect } from "react"
 import { useForm, ValidationError } from "@formspree/react"
+import { track } from "@vercel/analytics"
 
 const FORMSPREE_FORM_ID = "xzdewnbq"
 
@@ -9,6 +11,12 @@ interface WaitlistPanelProps {
 
 function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
   const [state, handleSubmit, reset] = useForm(FORMSPREE_FORM_ID)
+
+  useEffect(() => {
+    if (state.succeeded) {
+      track("waitlist_signup")
+    }
+  }, [state.succeeded])
 
   function handleClose() {
     if (state.succeeded) {
