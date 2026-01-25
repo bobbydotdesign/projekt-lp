@@ -2,9 +2,7 @@
 
 ## What This Is
 
-_Describe what this project does and who it's for._
-
-<!-- Update this as the project evolves -->
+Landing page for Projekt - a design tool for design engineers. Features a waitlist signup form.
 
 ## Tech Stack
 
