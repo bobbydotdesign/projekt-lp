@@ -1,8 +1,7 @@
 import { useEffect } from "react"
 import { useForm, ValidationError } from "@formspree/react"
 import { track } from "@vercel/analytics"
-
-const FORMSPREE_FORM_ID = "xzdewnbq"
+import { FORMSPREE_FORM_ID } from "@/lib/constants"
 
 interface WaitlistPanelProps {
   open: boolean
@@ -26,8 +25,9 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
   }
 
   return (
-    <div
+    <aside
       data-blend-name="WaitlistPanel"
+      aria-label="Waitlist signup"
       className={`
         h-full bg-black rounded-2xl overflow-hidden
         transition-all duration-200 ease-out
@@ -36,80 +36,33 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
     >
       <div
         className={`
-          h-full w-full md:w-[400px] flex flex-col px-8 pt-12 pb-8
+          h-full w-full md:w-[400px] flex flex-col px-8 pt-12 pb-8 font-['Inter']
           transition-opacity duration-150
           ${open ? "opacity-100 delay-100" : "opacity-0"}
         `}
-        style={{ fontFamily: 'Inter' }}
       >
         {/* Product description */}
         <div className="mb-auto animate-fade-in-up animate-delay-200">
-          <h3
-            className="text-white mb-3"
-            style={{
-              fontSize: 'clamp(15px, 1.3vw, 13px)',
-              fontWeight: 500,
-              letterSpacing: '0.05em',
-              lineHeight: 1.5
-            }}
-          >
+          <h1 className="text-white text-panel-heading mb-3">
             Projekt, built for design engineers.
-          </h3>
-          <p
-            className="text-gray-400 mb-4"
-            style={{
-              fontSize: 'clamp(14px, 1.1vw, 12px)',
-              fontWeight: 300,
-              letterSpacing: '0.02em',
-              lineHeight: 1.6
-            }}
-          >
+          </h1>
+          <p className="text-gray-400 text-panel-body mb-4">
             The control of an IDE meets the craft of a design tool, built specifically for Claude Code.
           </p>
-          <p
-            className="text-gray-400 mb-4"
-            style={{
-              fontSize: 'clamp(14px, 1.1vw, 12px)',
-              fontWeight: 300,
-              letterSpacing: '0.02em',
-              lineHeight: 1.6
-            }}
-          >
+          <p className="text-gray-400 text-panel-body mb-4">
             The best part? It's BYOK, so no more wasting money paying for models you don't need.
           </p>
-          <p
-            className="text-gray-400"
-            style={{
-              fontSize: 'clamp(14px, 1.1vw, 12px)',
-              fontWeight: 300,
-              letterSpacing: '0.02em',
-              lineHeight: 1.6
-            }}
-          >
+          <p className="text-gray-400 text-panel-body">
             Manage files, see live previews, launch agents, and refine every detail in one seamless experience.
           </p>
         </div>
 
         {/* Form header */}
         <div className="text-center mb-8 animate-fade-in-up animate-delay-300">
-          <h2
-            className="text-white mb-2"
-            style={{
-              fontSize: 'clamp(10px, 1.4vw, 14px)',
-              fontWeight: 400,
-              letterSpacing: '0.3em',
-              textTransform: 'uppercase'
-            }}
-          >
+          <h2 className="text-white text-form-heading mb-2">
             {state.succeeded ? "You're on the list" : "Join the Waitlist"}
           </h2>
-          <p
-            className="text-gray-500"
-            style={{
-              fontSize: 'clamp(10px, 1.2vw, 12px)',
-              letterSpacing: '0.1em'
-            }}
-          >
+          <p className="text-gray-500 text-form-subheading">
             {state.succeeded
               ? "We'll notify you when Projekt launches."
               : "Be the first to know when Projekt launches."}
@@ -119,32 +72,31 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
         {!state.succeeded ? (
           <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in-up animate-delay-400">
             <div>
+              <label htmlFor="email" className="sr-only">
+                Email address
+              </label>
               <input
                 id="email"
                 type="email"
                 name="email"
                 placeholder="Email address"
                 required
-                className="w-full bg-transparent border-b border-[#333] text-white placeholder:text-gray-500 py-3 focus:outline-none focus:border-white transition-colors"
-                style={{ fontSize: 'clamp(10px, 1.2vw, 12px)', letterSpacing: '0.1em' }}
+                autoComplete="email"
+                className="w-full bg-transparent border-b border-[#333] text-white placeholder:text-gray-500 py-3 focus:outline-none focus:border-white transition-colors text-form-input"
               />
               <ValidationError
                 prefix="Email"
                 field="email"
                 errors={state.errors}
                 className="text-red-400 text-xs mt-2 tracking-wide"
+                role="alert"
               />
             </div>
 
             <button
               type="submit"
               disabled={state.submitting}
-              className="w-full py-4 md:py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-50 text-sm md:text-xs"
-              style={{
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                fontWeight: 400
-              }}
+              className="w-full py-4 md:py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-50 text-sm md:text-xs text-form-button focus-visible:focus-ring"
             >
               {state.submitting ? "Joining..." : "Join Waitlist"}
             </button>
@@ -152,12 +104,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             <button
               type="button"
               onClick={handleClose}
-              className="w-full text-gray-600 hover:text-white py-2 transition-colors md:hidden"
-              style={{
-                fontSize: '10px',
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase'
-              }}
+              className="w-full text-gray-600 hover:text-white py-2 transition-colors md:hidden text-form-cancel focus-visible:focus-ring"
             >
               Cancel
             </button>
@@ -165,20 +112,13 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
         ) : (
           <button
             onClick={handleClose}
-            className="w-full py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 md:hidden animate-fade-in-up animate-delay-400"
-            style={{
-              fontSize: '11px',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              fontWeight: 400
-            }}
+            className="w-full py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 md:hidden animate-fade-in-up animate-delay-400 text-form-done focus-visible:focus-ring"
           >
             Done
           </button>
         )}
-
       </div>
-    </div>
+    </aside>
   )
 }
 

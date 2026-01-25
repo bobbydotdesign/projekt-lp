@@ -146,3 +146,100 @@
 .animate-fade-in-up {
   opacity: 0;
 }
+
+/* Custom typography utilities - preserves exact visual appearance */
+@layer components {
+  .text-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(12px, 1.8vw, 18px);
+    font-weight: 400;
+    letter-spacing: 2em;
+    text-transform: uppercase;
+  }
+
+  .text-logo-mobile {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .text-contact {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .text-panel-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(15px, 1.3vw, 13px);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+
+  .text-panel-body {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(14px, 1.1vw, 12px);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.6;
+  }
+
+  .text-form-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(10px, 1.4vw, 14px);
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  .text-form-subheading {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(10px, 1.2vw, 12px);
+    letter-spacing: 0.1em;
+  }
+
+  .text-form-input {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(10px, 1.2vw, 12px);
+    letter-spacing: 0.1em;
+  }
+
+  .text-form-button {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .text-form-cancel {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .text-form-done {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+}
+
+/* Focus visible styles for keyboard navigation */
+@layer utilities {
+  .focus-ring {
+    @apply outline-none ring-2 ring-white/50 ring-offset-2 ring-offset-black;
+  }
+}
+
+/* Custom cursor hiding */
+.cursor-hidden {
+  cursor: none;
+}
