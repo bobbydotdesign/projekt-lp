@@ -48,7 +48,7 @@ function CommitMessageBox() {
 function FloatingWaitlistButton({ x, y }: { x: number; y: number }) {
   return (
     <div
-      className="fixed pointer-events-none z-50"
+      className="fixed pointer-events-none z-50 hidden md:block"
       style={{
         left: `${x}px`,
         top: `${y}px`,
@@ -60,6 +60,18 @@ function FloatingWaitlistButton({ x, y }: { x: number; y: number }) {
         <img src="/images/arrow-narrow-right.svg" alt="Arrow" className="w-4 h-4" />
       </div>
     </div>
+  )
+}
+
+function MobileWaitlistButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden bg-black/70 backdrop-blur-sm text-white text-xs px-[21px] py-[18px] rounded-2xl flex items-center gap-2.5 whitespace-nowrap h-[39px]"
+    >
+      <span>Join Projekt Waitlist</span>
+      <img src="/images/arrow-narrow-right.svg" alt="Arrow" className="w-4 h-4" />
+    </button>
   )
 }
 
@@ -83,14 +95,17 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black p-4">
-      {/* Floating Waitlist Button that follows cursor */}
+      {/* Floating Waitlist Button that follows cursor - desktop only */}
       {showWaitlistCursor && <FloatingWaitlistButton x={mousePos.x} y={mousePos.y} />}
 
-      <div className={`w-full h-[calc(100vh-32px)] flex transition-all duration-500 ${waitlistOpen ? 'gap-4' : 'gap-0'}`}>
+      {/* Fixed bottom button - mobile only */}
+      {!waitlistOpen && <MobileWaitlistButton onClick={() => setWaitlistOpen(true)} />}
+
+      <div className={`w-full h-[calc(100vh-32px)] flex transition-all duration-200 ${waitlistOpen ? 'md:gap-4' : 'gap-0'}`}>
         {/* Main Landing Page */}
         <div
           data-blend-name="LandingPageContainer"
-          className="relative flex-1 h-full bg-gray-800 rounded-2xl overflow-hidden transition-all duration-500"
+          className={`relative flex-1 h-full bg-gray-800 rounded-2xl overflow-hidden transition-all duration-200 ${waitlistOpen ? 'hidden md:block' : ''}`}
           style={{
             backgroundImage: 'url("/images/background-2fafc0.png")',
             backgroundSize: 'cover',

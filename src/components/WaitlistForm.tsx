@@ -30,15 +30,15 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
       data-blend-name="WaitlistPanel"
       className={`
         h-full bg-black rounded-2xl overflow-hidden
-        transition-all duration-500 ease-out
-        ${open ? "w-[400px] opacity-100" : "w-0 opacity-0"}
+        transition-all duration-200 ease-out
+        ${open ? "w-full md:w-[400px] opacity-100" : "w-0 opacity-0"}
       `}
     >
       <div
         className={`
-          h-full w-[400px] flex flex-col justify-center px-8
-          transition-opacity duration-300
-          ${open ? "opacity-100 delay-200" : "opacity-0"}
+          h-full w-full md:w-[400px] flex flex-col justify-center px-8
+          transition-opacity duration-150
+          ${open ? "opacity-100 delay-100" : "opacity-0"}
         `}
         style={{ fontFamily: 'Inter' }}
       >
