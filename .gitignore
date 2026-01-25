@@ -27,3 +27,6 @@ Thumbs.db
 
 # Testing
 coverage
+.vercel
+.mcp.json
+.blend/
