@@ -36,15 +36,61 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
     >
       <div
         className={`
-          h-full w-full md:w-[400px] flex flex-col justify-center px-8
+          h-full w-full md:w-[400px] flex flex-col px-8 pt-12 pb-8
           transition-opacity duration-150
           ${open ? "opacity-100 delay-100" : "opacity-0"}
         `}
         style={{ fontFamily: 'Inter' }}
       >
-        <div className="text-center mb-10">
+        {/* Product description */}
+        <div className="mb-auto">
+          <p
+            className="text-white mb-3"
+            style={{
+              fontSize: 'clamp(15px, 1.3vw, 13px)',
+              fontWeight: 500,
+              letterSpacing: '0.05em',
+              lineHeight: 1.5
+            }}
+          >
+            Projekt, built for design engineers.
+          </p>
+          <p
+            className="text-gray-400 mb-4"
+            style={{
+              fontSize: 'clamp(14px, 1.1vw, 12px)',
+              letterSpacing: '0.02em',
+              lineHeight: 1.6
+            }}
+          >
+            The control of an IDE meets the craft of a design tool, built specifically for Claude Code.
+          </p>
+          <p
+            className="text-gray-400 mb-4"
+            style={{
+              fontSize: 'clamp(14px, 1.1vw, 12px)',
+              letterSpacing: '0.02em',
+              lineHeight: 1.6
+            }}
+          >
+            The best part? It's BYOK, so no more wasting money paying for models you don't need.
+          </p>
+          <p
+            className="text-gray-400"
+            style={{
+              fontSize: 'clamp(14px, 1.1vw, 12px)',
+              letterSpacing: '0.02em',
+              lineHeight: 1.6
+            }}
+          >
+            Manage files, see live previews, launch agents, and refine every detail in one seamless experience.
+          </p>
+        </div>
+
+        {/* Form header */}
+        <div className="text-center mb-8">
           <h2
-            className="text-white mb-4"
+            className="text-white mb-2"
             style={{
               fontSize: 'clamp(10px, 1.4vw, 14px)',
               fontWeight: 400,
@@ -90,9 +136,8 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             <button
               type="submit"
               disabled={state.submitting}
-              className="w-full py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-50"
+              className="w-full py-4 md:py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-50 text-sm md:text-xs"
               style={{
-                fontSize: '11px',
                 letterSpacing: '0.2em',
                 textTransform: 'uppercase',
                 fontWeight: 400
@@ -104,7 +149,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             <button
               type="button"
               onClick={handleClose}
-              className="w-full text-gray-600 hover:text-white py-2 transition-colors"
+              className="w-full text-gray-600 hover:text-white py-2 transition-colors md:hidden"
               style={{
                 fontSize: '10px',
                 letterSpacing: '0.15em',
@@ -117,7 +162,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
         ) : (
           <button
             onClick={handleClose}
-            className="w-full py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300"
+            className="w-full py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 md:hidden"
             style={{
               fontSize: '11px',
               letterSpacing: '0.2em',
@@ -128,6 +173,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             Done
           </button>
         )}
+
       </div>
     </div>
   )

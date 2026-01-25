@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { WaitlistPanel } from "@/components/WaitlistForm"
 
 function DesignLogo() {
@@ -79,6 +79,21 @@ function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [showWaitlistCursor, setShowWaitlistCursor] = useState(false)
   const [waitlistOpen, setWaitlistOpen] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(false)
+
+  // Check if desktop on mount and window resize
+  useEffect(() => {
+    const checkDesktop = () => {
+      const desktop = window.matchMedia('(min-width: 768px)').matches
+      setIsDesktop(desktop)
+      if (desktop) {
+        setWaitlistOpen(true)
+      }
+    }
+    checkDesktop()
+    window.addEventListener('resize', checkDesktop)
+    return () => window.removeEventListener('resize', checkDesktop)
+  }, [])
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePos({ x: e.clientX, y: e.clientY })
@@ -87,10 +102,6 @@ function App() {
 
   const handleMouseLeave = () => {
     setShowWaitlistCursor(false)
-  }
-
-  const handleClick = () => {
-    setWaitlistOpen(!waitlistOpen)
   }
 
   return (
@@ -110,14 +121,29 @@ function App() {
             backgroundImage: 'url("/images/background-2fafc0.png")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            cursor: waitlistOpen ? 'auto' : 'none'
+            cursor: 'none'
           }}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          onClick={handleClick}
         >
+          {/* Mobile header - Projekt name */}
+          <div className="absolute top-20 left-0 right-0 flex justify-center md:hidden">
+            <span
+              className="text-white"
+              style={{
+                fontFamily: 'Inter',
+                fontSize: '12px',
+                fontWeight: 400,
+                letterSpacing: '0.3em',
+                textTransform: 'uppercase'
+              }}
+            >
+              Projekt
+            </span>
+          </div>
+
           {/* Main Content Area - centered */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center" style={{ top: '-20%' }}>
+          <div className="absolute inset-0 flex flex-col items-center justify-center md:-mt-[20%]">
             <div className="mb-4">
               <CommitMessageBox />
             </div>
@@ -126,7 +152,7 @@ function App() {
         </div>
 
         {/* Waitlist Panel */}
-        <WaitlistPanel open={waitlistOpen} onClose={() => setWaitlistOpen(false)} />
+        <WaitlistPanel open={waitlistOpen} onClose={() => !isDesktop && setWaitlistOpen(false)} />
       </div>
     </div>
   )
