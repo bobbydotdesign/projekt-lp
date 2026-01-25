@@ -134,7 +134,7 @@ function App() {
         {/* Main Landing Page */}
         <div
           data-blend-name="LandingPageContainer"
-          className={`relative flex-1 h-full bg-gray-800 rounded-2xl overflow-hidden transition-all duration-200 ${waitlistOpen ? 'hidden md:block' : ''}`}
+          className={`relative flex-1 h-full bg-gray-800 rounded-2xl overflow-hidden transition-all duration-200 animate-fade-in ${waitlistOpen ? 'hidden md:block' : ''}`}
           style={{
             backgroundImage: 'url("/images/background-2fafc0.png")',
             backgroundSize: 'cover',
@@ -145,7 +145,7 @@ function App() {
           onMouseLeave={handleMouseLeave}
         >
           {/* Mobile header - Projekt name */}
-          <div className="absolute top-20 left-0 right-0 flex justify-center md:hidden">
+          <div className="absolute top-20 left-0 right-0 flex justify-center md:hidden animate-fade-in-up">
             <span
               className="text-white"
               style={{
@@ -162,16 +162,18 @@ function App() {
 
           {/* Main Content Area - centered */}
           <div className="absolute inset-0 flex flex-col items-center justify-center md:-mt-[20%]">
-            <div className="mb-4">
+            <div className="mb-4 animate-fade-in-up animate-delay-100">
               <CommitMessageBox />
             </div>
-            <DesignLogo />
+            <div className="animate-fade-in-up animate-delay-200">
+              <DesignLogo />
+            </div>
           </div>
 
           {/* Contact Link */}
           <a
             href="mailto:bobby@getprojekt.com"
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors"
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors animate-fade-in animate-delay-400"
             style={{
               fontFamily: 'Inter',
               fontSize: '10px',

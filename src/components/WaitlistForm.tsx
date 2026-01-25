@@ -43,7 +43,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
         style={{ fontFamily: 'Inter' }}
       >
         {/* Product description */}
-        <div className="mb-auto">
+        <div className="mb-auto animate-fade-in-up animate-delay-200">
           <h3
             className="text-white mb-3"
             style={{
@@ -91,7 +91,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
         </div>
 
         {/* Form header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 animate-fade-in-up animate-delay-300">
           <h2
             className="text-white mb-2"
             style={{
@@ -117,7 +117,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
         </div>
 
         {!state.succeeded ? (
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 animate-fade-in-up animate-delay-400">
             <div>
               <input
                 id="email"
@@ -165,7 +165,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
         ) : (
           <button
             onClick={handleClose}
-            className="w-full py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 md:hidden"
+            className="w-full py-3 border border-white text-white hover:bg-white hover:text-black transition-all duration-300 md:hidden animate-fade-in-up animate-delay-400"
             style={{
               fontSize: '11px',
               letterSpacing: '0.2em',
