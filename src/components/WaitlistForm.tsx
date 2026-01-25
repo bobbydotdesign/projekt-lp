@@ -59,6 +59,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             className="text-gray-400 mb-4"
             style={{
               fontSize: 'clamp(14px, 1.1vw, 12px)',
+              fontWeight: 300,
               letterSpacing: '0.02em',
               lineHeight: 1.6
             }}
@@ -69,6 +70,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             className="text-gray-400 mb-4"
             style={{
               fontSize: 'clamp(14px, 1.1vw, 12px)',
+              fontWeight: 300,
               letterSpacing: '0.02em',
               lineHeight: 1.6
             }}
@@ -79,6 +81,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             className="text-gray-400"
             style={{
               fontSize: 'clamp(14px, 1.1vw, 12px)',
+              fontWeight: 300,
               letterSpacing: '0.02em',
               lineHeight: 1.6
             }}
