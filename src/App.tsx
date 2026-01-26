@@ -4,7 +4,8 @@ import { DesignLogo } from "@/components/DesignLogo"
 import { CommitMessageBox } from "@/components/CommitMessageBox"
 import { FloatingCursor } from "@/components/FloatingCursor"
 import { MobileWaitlistButton } from "@/components/MobileWaitlistButton"
-import { CONTACT_EMAIL, BREAKPOINTS } from "@/lib/constants"
+import { ContactPopover } from "@/components/ContactPopover"
+import { BREAKPOINTS } from "@/lib/constants"
 import type { CursorVariant, MousePosition } from "@/types"
 
 const getIsDesktop = () =>
@@ -77,7 +78,13 @@ function App() {
     <div className="h-full bg-black p-2 md:p-4 overflow-hidden">
       {showCursor && <FloatingCursor position={mousePos} variant={cursorVariant} />}
 
-      {!waitlistOpen && <MobileWaitlistButton onClick={handleOpenWaitlist} />}
+      {/* Mobile bottom buttons */}
+      {!waitlistOpen && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden flex flex-col items-center gap-6">
+          <ContactPopover />
+          <MobileWaitlistButton onClick={handleOpenWaitlist} />
+        </div>
+      )}
 
       <div className={`w-full h-[calc(100vh-16px)] md:h-[calc(100vh-32px)] flex transition-all duration-200 ${waitlistOpen ? 'md:gap-4' : 'gap-0'}`}>
         <main
@@ -90,7 +97,7 @@ function App() {
           onMouseLeave={handleMouseLeave}
         >
           {/* Mobile header */}
-          <header className="absolute top-20 left-0 right-0 flex justify-center md:hidden animate-fade-in-up">
+          <header className="absolute top-28 left-0 right-0 flex justify-center md:hidden animate-fade-in-up">
             <span className="text-white text-logo-mobile">
               Projekt
             </span>
@@ -106,15 +113,13 @@ function App() {
             </div>
           </div>
 
-          {/* Contact Link */}
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-white transition-colors animate-fade-in animate-delay-400 text-contact focus-visible:focus-ring rounded"
-            onMouseEnter={handleContactMouseEnter}
-            onMouseLeave={handleContactMouseLeave}
-          >
-            Communicate
-          </a>
+          {/* Contact Popover - Desktop only */}
+          <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2">
+            <ContactPopover
+              onMouseEnter={handleContactMouseEnter}
+              onMouseLeave={handleContactMouseLeave}
+            />
+          </div>
         </main>
 
         <WaitlistPanel open={waitlistOpen} onClose={handleCloseWaitlist} />

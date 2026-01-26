@@ -5,3 +5,4 @@ export const BREAKPOINTS = {
 } as const
 
 export const FORMSPREE_FORM_ID = 'xzdewnbq'
+export const FORMSPREE_CONTACT_FORM_ID = 'xjgwybra'
