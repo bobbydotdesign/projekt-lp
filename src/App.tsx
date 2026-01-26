@@ -4,7 +4,9 @@ import { DesignLogo } from "@/components/DesignLogo"
 import { CommitMessageBox } from "@/components/CommitMessageBox"
 import { FloatingCursor } from "@/components/FloatingCursor"
 import { MobileWaitlistButton } from "@/components/MobileWaitlistButton"
+import { MobileContactButton } from "@/components/MobileContactButton"
 import { ContactPopover } from "@/components/ContactPopover"
+import { ContactPanel } from "@/components/ContactPanel"
 import { BREAKPOINTS } from "@/lib/constants"
 import type { CursorVariant, MousePosition } from "@/types"
 
@@ -17,6 +19,7 @@ function App() {
   const [cursorVariant, setCursorVariant] = useState<CursorVariant>('waitlist')
   const [isDesktop, setIsDesktop] = useState(getIsDesktop)
   const [waitlistOpen, setWaitlistOpen] = useState(getIsDesktop)
+  const [contactOpen, setContactOpen] = useState(false)
 
   const animationFrameRef = useRef<number | null>(null)
 
@@ -74,14 +77,22 @@ function App() {
     }
   }, [isDesktop])
 
+  const handleOpenContact = useCallback(() => {
+    setContactOpen(true)
+  }, [])
+
+  const handleCloseContact = useCallback(() => {
+    setContactOpen(false)
+  }, [])
+
   return (
     <div className="h-full bg-black p-2 md:p-4 overflow-hidden">
       {showCursor && <FloatingCursor position={mousePos} variant={cursorVariant} />}
 
       {/* Mobile bottom buttons */}
-      {!waitlistOpen && (
+      {!waitlistOpen && !contactOpen && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden flex flex-col items-center gap-6">
-          <ContactPopover />
+          <MobileContactButton onClick={handleOpenContact} />
           <MobileWaitlistButton onClick={handleOpenWaitlist} />
         </div>
       )}
@@ -89,7 +100,7 @@ function App() {
       <div className={`w-full h-[calc(100vh-16px)] md:h-[calc(100vh-32px)] flex transition-all duration-200 ${waitlistOpen ? 'md:gap-4' : 'gap-0'}`}>
         <main
           data-blend-name="LandingPageContainer"
-          className={`relative flex-1 h-full bg-gray-800 rounded-2xl overflow-hidden transition-all duration-200 animate-fade-in cursor-hidden bg-cover bg-center ${waitlistOpen ? 'hidden md:block' : ''}`}
+          className={`relative flex-1 h-full bg-gray-800 rounded-2xl overflow-hidden transition-all duration-200 animate-fade-in cursor-hidden bg-cover bg-center safari-radius-fix ${waitlistOpen ? 'hidden md:block' : ''}`}
           style={{
             backgroundImage: 'url("/images/background-2fafc0.png")'
           }}
@@ -104,7 +115,7 @@ function App() {
           </header>
 
           {/* Main Content Area */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center md:-mt-[20%]">
+          <div className="absolute inset-0 flex flex-col items-center justify-center -mt-[15%] md:-mt-[20%]">
             <div className="mb-4 animate-fade-in-up animate-delay-100">
               <CommitMessageBox />
             </div>
@@ -122,8 +133,18 @@ function App() {
           </div>
         </main>
 
-        <WaitlistPanel open={waitlistOpen} onClose={handleCloseWaitlist} />
+        {/* Show WaitlistPanel on desktop always, or on mobile when waitlist is open */}
+        {(isDesktop || waitlistOpen) && (
+          <WaitlistPanel open={waitlistOpen} onClose={handleCloseWaitlist} />
+        )}
       </div>
+
+      {/* Mobile Contact Panel - overlays on top of background */}
+      {!isDesktop && contactOpen && (
+        <div className="absolute inset-0 p-2 z-50 md:hidden">
+          <ContactPanel open={contactOpen} onClose={handleCloseContact} />
+        </div>
+      )}
     </div>
   )
 }
