@@ -31,12 +31,12 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
       className={`
         h-full bg-black rounded-2xl overflow-hidden
         transition-all duration-200 ease-out
-        ${open ? "w-full md:w-[400px] opacity-100" : "w-0 opacity-0"}
+        ${open ? "w-full md:w-[360px] opacity-100" : "w-0 opacity-0"}
       `}
     >
       <div
         className={`
-          h-full w-full md:w-[400px] flex flex-col px-8 pt-12 pb-8 font-['Inter']
+          h-full w-full md:w-[360px] flex flex-col px-8 pt-12 pb-8 font-['Inter']
           transition-opacity duration-150
           ${open ? "opacity-100 delay-100" : "opacity-0"}
         `}
@@ -47,7 +47,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
             Projekt, built for design engineers.
           </h1>
           <p className="text-gray-400 text-panel-body mb-4">
-            The control of an IDE meets the craft of a design tool, built specifically for Claude Code.
+            The control of an IDE meets the craft of a design tool, built specifically for Claude Code, with more soon.
           </p>
           <p className="text-gray-400 text-panel-body mb-4">
             The best part? It's BYOK, so no more wasting money paying for models you don't need.
@@ -58,11 +58,11 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
         </div>
 
         {/* Form header */}
-        <div className="text-center mb-8 animate-fade-in-up animate-delay-300">
+        <div className="text-left mb-8 animate-fade-in-up animate-delay-300">
           <h2 className="text-white text-form-heading mb-2">
             {state.succeeded ? "You're on the list" : "Join the Waitlist"}
           </h2>
-          <p className="text-gray-500 text-form-subheading">
+          <p className="text-gray-400 text-panel-body">
             {state.succeeded
               ? "We'll notify you when Projekt launches."
               : "Be the first to know when Projekt launches."}
