@@ -194,7 +194,7 @@
   .text-panel-heading {
     font-family: 'Inter', sans-serif;
     font-size: clamp(15px, 1.3vw, 13px);
-    font-weight: 500;
+    font-weight: 400;
     letter-spacing: 0.05em;
     line-height: 1.5;
   }
