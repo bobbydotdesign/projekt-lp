@@ -4,11 +4,10 @@ import { track } from "@vercel/analytics"
 import { FORMSPREE_CONTACT_FORM_ID } from "@/lib/constants"
 
 interface ContactPanelProps {
-  open: boolean
   onClose: () => void
 }
 
-function ContactPanel({ open, onClose }: ContactPanelProps) {
+function ContactPanel({ onClose }: ContactPanelProps) {
   const [state, handleSubmit, reset] = useForm(FORMSPREE_CONTACT_FORM_ID)
   const [email, setEmail] = useState("")
   const [message, setMessage] = useState("")

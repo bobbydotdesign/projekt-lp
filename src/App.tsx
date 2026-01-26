@@ -142,7 +142,7 @@ function App() {
       {/* Mobile Contact Panel - overlays on top of background */}
       {!isDesktop && contactOpen && (
         <div className="absolute inset-0 p-2 z-50 md:hidden">
-          <ContactPanel open={contactOpen} onClose={handleCloseContact} />
+          <ContactPanel onClose={handleCloseContact} />
         </div>
       )}
     </div>
