@@ -191,7 +191,7 @@
 
   .text-form-heading {
     font-family: 'Inter', sans-serif;
-    font-size: clamp(10px, 1.4vw, 14px);
+    font-size: clamp(9px, 1.2vw, 12px);
     font-weight: 400;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -211,6 +211,7 @@
 
   .text-form-button {
     font-family: 'Inter', sans-serif;
+    font-size: clamp(9px, 1.2vw, 12px);
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 400;
