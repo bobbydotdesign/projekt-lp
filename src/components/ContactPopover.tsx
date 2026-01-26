@@ -42,7 +42,7 @@ function ContactPopover({ onMouseEnter, onMouseLeave }: ContactPopoverProps) {
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <button
-          className="text-white/60 hover:text-white transition-colors animate-fade-in animate-delay-400 text-contact focus-visible:focus-ring rounded"
+          className="hidden sm:inline text-white/60 hover:text-white transition-colors animate-fade-in animate-delay-400 text-contact focus-visible:focus-ring rounded"
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         >
