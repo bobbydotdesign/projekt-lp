@@ -6,7 +6,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { FORMSPREE_CONTACT_FORM_ID } from "@/lib/constants"
+import { FORMSPREE_CONTACT_FORM_ID, FORM_RESET_DELAY_MS } from "@/lib/constants"
+import { buttonStyles } from "@/lib/styles"
 
 interface ContactPopoverProps {
   onMouseEnter?: () => void
@@ -34,7 +35,7 @@ function ContactPopover({ onMouseEnter, onMouseLeave }: ContactPopoverProps) {
         reset()
         setEmail("")
         setMessage("")
-      }, 300)
+      }, FORM_RESET_DELAY_MS)
     }
   }
 
@@ -42,7 +43,7 @@ function ContactPopover({ onMouseEnter, onMouseLeave }: ContactPopoverProps) {
     <Popover open={open} onOpenChange={handleOpenChange}>
       <PopoverTrigger asChild>
         <button
-          className="hidden sm:inline text-white/60 hover:text-white transition-colors animate-fade-in animate-delay-400 text-contact focus-visible:focus-ring rounded"
+          className={`hidden sm:inline animate-fade-in animate-delay-400 ${buttonStyles.contact}`}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         >

@@ -1,14 +1,14 @@
 import { useEffect } from "react"
 import { useForm, ValidationError } from "@formspree/react"
 import { track } from "@vercel/analytics"
-import { FORMSPREE_FORM_ID } from "@/lib/constants"
+import { FORMSPREE_FORM_ID, FORM_RESET_DELAY_MS } from "@/lib/constants"
 
-interface WaitlistPanelProps {
+interface WaitlistFormProps {
   open: boolean
   onClose: () => void
 }
 
-function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
+function WaitlistForm({ open, onClose }: WaitlistFormProps) {
   const [state, handleSubmit, reset] = useForm(FORMSPREE_FORM_ID)
 
   useEffect(() => {
@@ -19,14 +19,14 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
 
   function handleClose() {
     if (state.succeeded) {
-      setTimeout(() => reset(), 300)
+      setTimeout(() => reset(), FORM_RESET_DELAY_MS)
     }
     onClose()
   }
 
   return (
     <aside
-      data-blend-name="WaitlistPanel"
+      data-blend-name="WaitlistForm"
       aria-label="Waitlist signup"
       className={`
         h-full bg-black rounded-2xl overflow-hidden
@@ -41,7 +41,6 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
           ${open ? "opacity-100 delay-100" : "opacity-0"}
         `}
       >
-        {/* Product description */}
         <div className="mb-auto animate-fade-in-up animate-delay-200">
           <h1 className="text-white text-sm mb-3 font-normal">
             Projekt, built for design engineers.
@@ -57,7 +56,6 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
           </p>
         </div>
 
-        {/* Form header */}
         <div className="text-left mb-8 animate-fade-in-up animate-delay-300">
           <h2 className="text-white text-form-heading mb-2 h-[21px]">
             {state.succeeded ? "You're on the list" : "Join the Waitlist"}
@@ -122,4 +120,4 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
   )
 }
 
-export { WaitlistPanel }
+export { WaitlistForm }

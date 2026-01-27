@@ -1,3 +1,6 @@
+import { buttonStyles } from '@/lib/styles'
+import { BUTTON_HEIGHT, BUTTON_PADDING_X, BUTTON_PADDING_Y } from '@/lib/constants'
+
 interface MobileWaitlistButtonProps {
   onClick: () => void
 }
@@ -7,7 +10,14 @@ function MobileWaitlistButton({ onClick }: MobileWaitlistButtonProps) {
     <button
       onClick={onClick}
       aria-label="Open Projekt waitlist signup form"
-      className="bg-black/70 backdrop-blur-sm text-white text-xs px-[21px] py-[18px] rounded-2xl flex items-center gap-2.5 whitespace-nowrap h-[39px] focus-visible:focus-ring"
+      className={`${buttonStyles.pill} focus-visible:focus-ring`}
+      style={{
+        paddingLeft: BUTTON_PADDING_X,
+        paddingRight: BUTTON_PADDING_X,
+        paddingTop: BUTTON_PADDING_Y,
+        paddingBottom: BUTTON_PADDING_Y,
+        height: BUTTON_HEIGHT,
+      }}
     >
       <span>Join Projekt Waitlist</span>
       <img src="/images/arrow-narrow-right.svg" alt="" className="w-4 h-4" aria-hidden="true" />

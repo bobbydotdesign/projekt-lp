@@ -1,4 +1,12 @@
 import type { CursorVariant, MousePosition } from '@/types'
+import { buttonStyles } from '@/lib/styles'
+import {
+  BUTTON_HEIGHT,
+  BUTTON_PADDING_X,
+  BUTTON_PADDING_Y,
+  CURSOR_WIDTH_EMAIL,
+  CURSOR_WIDTH_WAITLIST,
+} from '@/lib/constants'
 
 interface FloatingCursorProps {
   position: MousePosition
@@ -17,9 +25,14 @@ function FloatingCursor({ position, variant = 'waitlist' }: FloatingCursorProps)
       aria-hidden="true"
     >
       <div
-        className="bg-black/70 backdrop-blur-sm text-white text-xs px-[21px] py-[18px] rounded-2xl flex items-center gap-2.5 whitespace-nowrap h-[39px] transition-[width] duration-300 ease-out"
+        className={`${buttonStyles.pill} transition-[width] duration-300 ease-out`}
         style={{
-          width: variant === 'email' ? '90px' : '185px'
+          paddingLeft: BUTTON_PADDING_X,
+          paddingRight: BUTTON_PADDING_X,
+          paddingTop: BUTTON_PADDING_Y,
+          paddingBottom: BUTTON_PADDING_Y,
+          height: BUTTON_HEIGHT,
+          width: variant === 'email' ? CURSOR_WIDTH_EMAIL : CURSOR_WIDTH_WAITLIST
         }}
       >
         <span>

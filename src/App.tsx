@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react"
-import { WaitlistPanel } from "@/components/WaitlistForm"
+import { WaitlistForm } from "@/components/WaitlistForm"
 import { DesignLogo } from "@/components/DesignLogo"
 import { CommitMessageBox } from "@/components/CommitMessageBox"
 import { FloatingCursor } from "@/components/FloatingCursor"
@@ -89,7 +89,6 @@ function App() {
     <div className="h-full bg-black p-2 md:p-4 overflow-hidden">
       {showCursor && <FloatingCursor position={mousePos} variant={cursorVariant} />}
 
-      {/* Mobile bottom buttons */}
       {!waitlistOpen && !contactOpen && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden flex flex-col items-center gap-6">
           <MobileContactButton onClick={handleOpenContact} />
@@ -107,14 +106,12 @@ function App() {
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
         >
-          {/* Mobile header */}
           <header className="absolute top-28 left-0 right-0 flex justify-center md:hidden animate-fade-in-up">
             <span className="text-white text-logo-mobile">
               Projekt
             </span>
           </header>
 
-          {/* Main Content Area */}
           <div className="absolute inset-0 flex flex-col items-center justify-center -mt-[15%] md:-mt-[20%]">
             <div className="mb-4 animate-fade-in-up animate-delay-100">
               <CommitMessageBox />
@@ -124,7 +121,6 @@ function App() {
             </div>
           </div>
 
-          {/* Contact Popover - Desktop only */}
           <div className="hidden md:block absolute bottom-8 left-1/2 -translate-x-1/2">
             <ContactPopover
               onMouseEnter={handleContactMouseEnter}
@@ -133,13 +129,11 @@ function App() {
           </div>
         </main>
 
-        {/* Show WaitlistPanel on desktop always, or on mobile when waitlist is open */}
         {(isDesktop || waitlistOpen) && (
-          <WaitlistPanel open={waitlistOpen} onClose={handleCloseWaitlist} />
+          <WaitlistForm open={waitlistOpen} onClose={handleCloseWaitlist} />
         )}
       </div>
 
-      {/* Mobile Contact Panel - overlays on top of background */}
       {!isDesktop && contactOpen && (
         <div className="absolute inset-0 p-2 z-50 md:hidden">
           <ContactPanel onClose={handleCloseContact} />

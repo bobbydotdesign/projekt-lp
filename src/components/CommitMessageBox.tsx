@@ -1,10 +1,18 @@
 import { ArrowRight } from "lucide-react"
+import { BUTTON_HEIGHT, BUTTON_PADDING_X, BUTTON_PADDING_Y } from '@/lib/constants'
 
 function CommitMessageBox() {
   return (
     <div
       data-blend-name="CommitBox"
-      className="bg-[#212121] rounded-2xl px-[21px] py-[18px] flex items-center justify-between w-fit h-[39px] gap-3"
+      className="bg-[#212121] rounded-2xl flex items-center justify-between w-fit gap-3"
+      style={{
+        paddingLeft: BUTTON_PADDING_X,
+        paddingRight: BUTTON_PADDING_X,
+        paddingTop: BUTTON_PADDING_Y,
+        paddingBottom: BUTTON_PADDING_Y,
+        height: BUTTON_HEIGHT,
+      }}
       role="img"
       aria-label="Commit message input preview"
     >

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useForm } from "@formspree/react"
 import { track } from "@vercel/analytics"
-import { FORMSPREE_CONTACT_FORM_ID } from "@/lib/constants"
+import { FORMSPREE_CONTACT_FORM_ID, FORM_RESET_DELAY_MS } from "@/lib/constants"
+import { buttonStyles } from "@/lib/styles"
 
 interface ContactPanelProps {
   onClose: () => void
@@ -24,7 +25,7 @@ function ContactPanel({ onClose }: ContactPanelProps) {
         reset()
         setEmail("")
         setMessage("")
-      }, 300)
+      }, FORM_RESET_DELAY_MS)
     }
     onClose()
   }
@@ -41,7 +42,6 @@ function ContactPanel({ onClose }: ContactPanelProps) {
       className="absolute inset-0 bg-white/[0.08] backdrop-blur-xl rounded-2xl overflow-hidden"
     >
       <div className="h-full w-full flex flex-col justify-end px-8 pt-12 pb-8 font-['Inter']">
-        {/* Form */}
         {!state.succeeded ? (
           <form onSubmit={handleFormSubmit} className="space-y-6 animate-fade-in-up animate-delay-400">
             <div>
@@ -80,7 +80,7 @@ function ContactPanel({ onClose }: ContactPanelProps) {
             <button
               type="submit"
               disabled={state.submitting}
-              className="w-full py-4 border border-white/50 text-white hover:bg-white hover:text-black transition-all duration-300 disabled:opacity-50 text-sm text-form-button focus-visible:focus-ring"
+              className={buttonStyles.submit}
             >
               {state.submitting ? "Sending..." : "Send"}
             </button>
@@ -88,7 +88,7 @@ function ContactPanel({ onClose }: ContactPanelProps) {
             <button
               type="button"
               onClick={handleClose}
-              className="w-full text-white/40 hover:text-white py-2 transition-colors text-form-cancel focus-visible:focus-ring"
+              className={buttonStyles.cancel}
             >
               Cancel
             </button>
@@ -100,7 +100,7 @@ function ContactPanel({ onClose }: ContactPanelProps) {
             </div>
             <button
               onClick={handleClose}
-              className="w-full py-4 border border-white/50 text-white hover:bg-white hover:text-black transition-all duration-300 text-form-done focus-visible:focus-ring"
+              className={buttonStyles.done}
             >
               Done
             </button>
