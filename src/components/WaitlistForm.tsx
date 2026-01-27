@@ -43,7 +43,7 @@ function WaitlistForm({ open, onClose }: WaitlistFormProps) {
       >
         <div className="mb-auto animate-fade-in-up animate-delay-200">
           <h1 className="text-white text-sm mb-3 font-normal">
-            Projekt, built for design engineers.
+            Projekt, built for designers who engineer.
           </h1>
           <p className="text-gray-400 text-panel-body mb-4">
             The control of an IDE meets the craft of a design tool, built specifically for Claude Code, with more soon.
