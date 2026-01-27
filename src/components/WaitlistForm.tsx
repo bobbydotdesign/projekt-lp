@@ -43,7 +43,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
       >
         {/* Product description */}
         <div className="mb-auto animate-fade-in-up animate-delay-200">
-          <h1 className="text-white text-panel-heading mb-3">
+          <h1 className="text-white text-sm mb-3 font-normal">
             Projekt, built for design engineers.
           </h1>
           <p className="text-gray-400 text-panel-body mb-4">
@@ -59,7 +59,7 @@ function WaitlistPanel({ open, onClose }: WaitlistPanelProps) {
 
         {/* Form header */}
         <div className="text-left mb-8 animate-fade-in-up animate-delay-300">
-          <h2 className="text-white text-form-heading mb-2">
+          <h2 className="text-white text-form-heading mb-2 h-[21px]">
             {state.succeeded ? "You're on the list" : "Join the Waitlist"}
           </h2>
           <p className="text-gray-400 text-panel-body">
