@@ -2,7 +2,7 @@
 
 ## What This Is
 
-Landing page for Projekt - a design tool for design engineers. Features a waitlist signup form.
+Landing page for Projekt - a design tool for designers who engineer. Features a waitlist and a signup form.
 
 ## Tech Stack
 
