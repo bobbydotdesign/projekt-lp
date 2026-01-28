@@ -46,7 +46,7 @@ function WaitlistForm({ open, onClose }: WaitlistFormProps) {
             Projekt, built for designers who engineer.
           </h1>
           <p className="text-gray-400 text-panel-body mb-4">
-            The control and speed of a terminal meets the craft of a design tool, built specifically for Claude Code, with more soon.
+            The control and speed of a terminal meets the craft of a design tool, built specifically for Claude Code.
           </p>
           <p className="text-gray-400 text-panel-body mb-4">
             The best part? It's BYOK, so no more wasting money paying for models you don't need.
