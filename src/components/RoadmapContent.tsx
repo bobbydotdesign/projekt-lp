@@ -26,7 +26,7 @@ interface Tenet {
 const tenets: Tenet[] = [
   {
     title: "The evolution, not a compromise",
-    description: "This is what design tools become in the era of AI. Not a hybrid, not a bridge — visual development as it should have always been.",
+    description: "This is what design tools become in the era of AI. Not a hybrid, not a bridge, how prompt engineering as it should have always been.",
   },
   {
     title: "Production-ready is the only output",
@@ -34,7 +34,7 @@ const tenets: Tenet[] = [
   },
   {
     title: "Zero to building in seconds",
-    description: "No setup screens, no stack decisions, no naming required. The first experience should feel like magic, not bureaucracy.",
+    description: "No setup screens, no stack decisions, no naming required. The first experience should feel like magic, not screens of setup.",
   },
   {
     title: "Prompt-first, GUI-always",
@@ -42,7 +42,7 @@ const tenets: Tenet[] = [
   },
   {
     title: "Speed is a feature",
-    description: "Responsiveness isn't polish — it's core. Fast feedback loops keep users in flow. Milliseconds compound into feeling.",
+    description: "Responsiveness isn't polish, it's core. Fast feedback loops keep users in flow. Milliseconds compound into feeling.",
   },
   {
     title: "Opinionated defaults, portable outputs",
