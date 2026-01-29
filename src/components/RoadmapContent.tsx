@@ -55,8 +55,6 @@ const roadmapData: RoadmapSection[] = [
     id: "in-progress",
     title: "In Progress",
     items: [
-      { title: "Speed improvements", description: "Faster startup, snappier interactions, reduced latency everywhere", completed: false },
-      { title: "Reliability hardening", description: "Edge case handling, graceful recovery, rock-solid stability", completed: false },
       { title: "Pages dropdown fix", description: "Resolving URL bar page selector issues", completed: false },
       { title: "Auth flow", description: "Login and signup with Supabase", completed: false },
       { title: "License validation", description: "Alpha access gating for early users", completed: false },
@@ -67,6 +65,8 @@ const roadmapData: RoadmapSection[] = [
     id: "whats-next",
     title: "What's Next",
     items: [
+      { title: "Speed improvements", description: "Faster startup, snappier interactions, reduced latency everywhere", completed: false },
+      { title: "Reliability hardening", description: "Edge case handling, graceful recovery, rock-solid stability", completed: false },
       { title: "Onboarding flow", description: "Guided first-run experience to get you building fast", completed: false },
       { title: "Tutorials & help", description: "In-app guidance, tips, and documentation", completed: false },
       { title: "Multi-project workspaces", description: "Work across multiple projects simultaneously", completed: false },
