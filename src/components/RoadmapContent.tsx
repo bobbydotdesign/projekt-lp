@@ -61,15 +61,14 @@ const roadmapData: RoadmapSection[] = [
       { title: "Auth flow", description: "Login and signup with Supabase", completed: false },
       { title: "License validation", description: "Alpha access gating for early users", completed: false },
       { title: "Settings sync", description: "Cloud-synced preferences across devices", completed: false },
-      { title: "Onboarding flow", description: "Guided first-run experience to get you building fast", completed: false },
-      { title: "Tutorials & help", description: "In-app guidance, tips, and documentation", completed: false },
     ],
   },
   {
     id: "whats-next",
     title: "What's Next",
     items: [
-      { title: "Multi-provider support", description: "OpenCode, Codex, and other AI coding assistants", completed: false },
+      { title: "Onboarding flow", description: "Guided first-run experience to get you building fast", completed: false },
+      { title: "Tutorials & help", description: "In-app guidance, tips, and documentation", completed: false },
       { title: "Multi-project workspaces", description: "Work across multiple projects simultaneously", completed: false },
       { title: "Agent presets", description: "Pre-configured modes for code review, debugging, refactoring", completed: false },
     ],
@@ -78,6 +77,7 @@ const roadmapData: RoadmapSection[] = [
     id: "horizon",
     title: "On the Horizon",
     items: [
+      { title: "Multi-provider support", description: "OpenCode, Codex, and other AI coding assistants", completed: false },
       { title: "External browser selection", description: "Select elements in Chrome/Safari, not just the preview", completed: false },
       { title: "Claude-assisted debugging", description: "Auto-diagnose issues when things go wrong", completed: false },
       { title: "Local-first data", description: "SQLite storage that graduates to cloud when ready", completed: false },
