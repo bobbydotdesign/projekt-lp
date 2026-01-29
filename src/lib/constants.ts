@@ -18,3 +18,4 @@ export const FORM_RESET_DELAY_MS = 300
 // Cursor widths
 export const CURSOR_WIDTH_EMAIL = '90px'
 export const CURSOR_WIDTH_WAITLIST = '185px'
+export const CURSOR_WIDTH_ROADMAP = '140px'

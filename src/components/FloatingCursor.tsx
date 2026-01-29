@@ -6,6 +6,7 @@ import {
   BUTTON_PADDING_Y,
   CURSOR_WIDTH_EMAIL,
   CURSOR_WIDTH_WAITLIST,
+  CURSOR_WIDTH_ROADMAP,
 } from '@/lib/constants'
 
 interface FloatingCursorProps {
@@ -32,18 +33,26 @@ function FloatingCursor({ position, variant = 'waitlist' }: FloatingCursorProps)
           paddingTop: BUTTON_PADDING_Y,
           paddingBottom: BUTTON_PADDING_Y,
           height: BUTTON_HEIGHT,
-          width: variant === 'email' ? CURSOR_WIDTH_EMAIL : CURSOR_WIDTH_WAITLIST
+          width: variant === 'email'
+            ? CURSOR_WIDTH_EMAIL
+            : variant === 'roadmap'
+              ? CURSOR_WIDTH_ROADMAP
+              : CURSOR_WIDTH_WAITLIST
         }}
       >
         <span>
-          {variant === 'email' ? 'Email' : 'Join Projekt Waitlist'}
+          {variant === 'email' ? 'Email' : variant === 'roadmap' ? 'See Roadmap' : 'Join Projekt Waitlist'}
         </span>
         <img
           src="/images/arrow-narrow-right.svg"
           alt=""
           className="w-4 h-4 transition-transform duration-300 ease-out"
           style={{
-            transform: variant === 'email' ? 'rotate(-45deg)' : 'rotate(0deg)'
+            transform: variant === 'email'
+              ? 'rotate(-45deg)'
+              : variant === 'roadmap'
+                ? 'rotate(90deg)'
+                : 'rotate(0deg)'
           }}
         />
       </div>
