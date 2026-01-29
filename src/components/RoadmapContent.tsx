@@ -70,13 +70,13 @@ const roadmapData: RoadmapSection[] = [
       { title: "Onboarding flow", description: "Guided first-run experience to get you building fast", completed: false },
       { title: "Tutorials & help", description: "In-app guidance, tips, and documentation", completed: false },
       { title: "Multi-project workspaces", description: "Work across multiple projects simultaneously", completed: false },
-      { title: "Agent presets", description: "Pre-configured modes for code review, debugging, refactoring", completed: false },
     ],
   },
   {
     id: "horizon",
     title: "On the Horizon",
     items: [
+      { title: "Agent presets", description: "Pre-configured modes for code review, debugging, refactoring", completed: false },
       { title: "Multi-provider support", description: "OpenCode, Codex, and other AI coding assistants", completed: false },
       { title: "External browser selection", description: "Select elements in Chrome/Safari, not just the preview", completed: false },
       { title: "Claude-assisted debugging", description: "Auto-diagnose issues when things go wrong", completed: false },
