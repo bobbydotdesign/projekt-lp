@@ -58,13 +58,13 @@ const roadmapData: RoadmapSection[] = [
       { title: "Pages dropdown fix", description: "Resolving URL bar page selector issues", completed: false },
       { title: "Auth flow", description: "Login and signup with Supabase", completed: false },
       { title: "License validation", description: "Alpha access gating for early users", completed: false },
-      { title: "Settings sync", description: "Cloud-synced preferences across devices", completed: false },
     ],
   },
   {
     id: "whats-next",
     title: "What's Next",
     items: [
+      { title: "Settings sync", description: "Cloud-synced preferences across devices", completed: false },
       { title: "Speed improvements", description: "Faster startup, snappier interactions, reduced latency everywhere", completed: false },
       { title: "Reliability hardening", description: "Edge case handling, graceful recovery, rock-solid stability", completed: false },
       { title: "Onboarding flow", description: "Guided first-run experience to get you building fast", completed: false },
